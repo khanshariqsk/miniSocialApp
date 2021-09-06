@@ -10,6 +10,7 @@ const app = express();
 //Basic things
 dotenv.config();
 const uri = process.env.MONGODB_URL
+const port = 8080
 
 // Middlewares
 app.use(express.json());
@@ -26,7 +27,7 @@ mongoose.connect(uri)
 app.use('/api/users',userRoutes)
 app.use('/api/auth',authRoutes) 
 
-app.listen(8080, () => {
+app.listen(port, () => {
     console.log("server is up and running!");
 });
 
