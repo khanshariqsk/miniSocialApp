@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
+const postRoutes = require("./routes/posts");
 const app = express();
 
 //Basic things
@@ -26,6 +27,7 @@ mongoose.connect(uri)
 //Routes Middlewares
 app.use('/api/users',userRoutes)
 app.use('/api/auth',authRoutes) 
+app.use('/api/posts',postRoutes) 
 
 app.listen(port, () => {
     console.log("server is up and running!");
