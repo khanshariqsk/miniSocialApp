@@ -89,6 +89,52 @@ exports.getSingleUser = async (req, res, next) => {
     } catch (error) {
         return res.status(500).json('Internal server Error!!')
     }
-
 }
 
+
+// Follow User Controller
+exports.followUser = async (req, res, next) => {
+    try {
+        if (req.body?.userId !== req.params?.id) {
+            const user = await User.findById(req.params?.id)
+            const currentUser = await User.findById(req.body?.userId)
+
+            if (!user.followers.includes(req.body?.userId)) {
+                await user.updateOne({ $push: { followers: req.body?.userId } })
+                await currentUser.updateOne({ $push: { following: req.params?.id } })
+                return res.status(200).json('User has been followed!!')
+            } else {
+                return res.status(403).json('You are already following this user!!')
+            }
+        } else {
+            return res.status(403).json('You cant follow yourself!!')
+        }
+
+    } catch (error) {
+        return res.status(500).json('Internal server Error!!')
+    }
+}
+
+
+// UnFollow User Controller
+exports.unFollowUser = async (req, res, next) => {
+    try {
+        if (req.body?.userId !== req.params?.id) {
+            const user = await User.findById(req.params?.id)
+            const currentUser = await User.findById(req.body?.userId)
+
+            if (user.followers.includes(req.body?.userId)) {
+                await user.updateOne({ $pull: { followers: req.body?.userId } })
+                await currentUser.updateOne({ $pull: { following: req.params?.id } })
+                return res.status(200).json('User has been unfollowed!!')
+            } else {
+                return res.status(403).json('You are already Not following this user!!')
+            }
+        } else {
+            return res.status(403).json('You cant unfollow yourself!!')
+        }
+
+    } catch (error) {
+        return res.status(500).json('Internal server Error!!')
+    }
+}
