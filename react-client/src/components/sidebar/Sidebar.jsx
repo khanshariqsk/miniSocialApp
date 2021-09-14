@@ -8,7 +8,15 @@ import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import WorkIcon from "@material-ui/icons/Work";
 import EventIcon from "@material-ui/icons/Event";
 import { Users } from "../../dummyData";
+import { useEffect } from "react";
 const Sidebar = () => {
+  useEffect(() => {
+    const sidebarElement = document.querySelector(".sidebar");
+    console.log(sidebarElement)
+    sidebarElement.addEventListener("hover", () => {
+      console.log("hello");
+    });
+  }, []);
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
@@ -52,7 +60,7 @@ const Sidebar = () => {
           {Users.map((user) => (
             <li key={user.id} className="sidebarFriendListItem">
               <img
-                src={'/'+user.profilePicture}
+                src={"/" + user.profilePicture}
                 alt=""
                 className="sidebarFriendListItemImage"
               />
