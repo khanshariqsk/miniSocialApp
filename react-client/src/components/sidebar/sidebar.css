@@ -2,6 +2,8 @@
     flex:3;
     height:calc(100vh - 3.2rem);
     overflow-y: scroll;
+    position:sticky;
+    top:3.2rem
 }
 
 .sidebar::-webkit-scrollbar{
@@ -15,7 +17,7 @@
 }
 
 .sidebarWrapper{
-    padding:1.5rem;
+    padding:1.4rem;
  
 }
 .sidebarList{

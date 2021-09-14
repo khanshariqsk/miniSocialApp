@@ -1,3 +1,47 @@
-.rightbar{
-    flex:3.5
+.rightbar {
+  flex: 3.5;
+  height: calc(100vh - 3.2rem);
+  overflow-y: scroll;
+  position: sticky;
+  top: 3.2rem;
 }
+.rightbar::-webkit-scrollbar{
+    width:0.4rem;
+}
+.rightbar::-webkit-scrollbar-thumb{
+    background-color: rgb(189, 184, 184);
+}
+.rightbar::-webkit-scrollbar{
+    background-color:#f1f1f1;
+}
+.rightbarWrapper {
+  padding: 1rem 1rem 0 0;
+}
+.rightbarBirthdayContainer {
+  display: flex;
+  align-items: center;
+}
+.righbarBirthdayImage {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
+}
+.righbarBirthdayText {
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+.rightbarAdds{
+    margin: 1rem 0;
+}
+.rightAdvertisementImage{
+    width: 100%;
+    max-height:14rem;
+    border-radius: 0.5rem;
+}
+
+.rightbarOnlineFriendList{
+    margin: 1rem 0 0 0;
+    padding:0;
+    list-style: none;
+}
+
