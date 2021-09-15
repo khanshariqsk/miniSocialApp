@@ -29,7 +29,36 @@ const Rightbar = (props) => {
   );
   const profileRighbar = (
     <>
-      <h1>hello my profile!</h1>
+      <h4 className="userProfileInformationTag">User Information</h4>
+      <div className="userProfileInformation">
+        <div className="userProfileCity">
+          <span className="userProfileCityKey">City:</span>
+          <span className="userProfileCityValue">New York</span>
+        </div>
+        <div className="userProfileFrom">
+          <span className="userProfileFromKey">From:</span>
+          <span className="userProfileFromValue">Madrid</span>
+        </div>
+        <div className="userProfileRelationship">
+          <span className="userProfileRelationshipKey">Relationship:</span>
+          <span className="userProfileRelationshipValue">Single</span>
+        </div>
+      </div>
+      <h4 className="userProfileFriendTag">User Friends</h4>
+      <div className="userProfileFriends">
+        <ul className="userProfileFriendList">
+          {Users.map((user) => (
+            <li className="userProfileFriendListItem">
+              <img
+                src={"/" + user?.profilePicture}
+                className="userProfileFriendListImage"
+                alt="profile"
+              />
+              <span className="userProfileFriendListName">{user.username}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
   const rightbarContent = props?.profile ? profileRighbar : homeRightbar;

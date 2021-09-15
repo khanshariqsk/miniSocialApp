@@ -5,14 +5,14 @@
   position: sticky;
   top: 3.2rem;
 }
-.rightbar::-webkit-scrollbar{
-    width:0.4rem;
+.rightbar::-webkit-scrollbar {
+  width: 0.4rem;
 }
-.rightbar::-webkit-scrollbar-thumb{
-    background-color: rgb(189, 184, 184);
+.rightbar::-webkit-scrollbar-thumb {
+  background-color: rgb(189, 184, 184);
 }
-.rightbar::-webkit-scrollbar{
-    background-color:#f1f1f1;
+.rightbar::-webkit-scrollbar {
+  background-color: #f1f1f1;
 }
 .rightbarWrapper {
   padding: 1rem 1rem 0 0;
@@ -30,18 +30,70 @@
   font-size: 0.9rem;
   font-weight: 300;
 }
-.rightbarAdds{
-    margin: 1rem 0;
+.rightbarAdds {
+  margin: 1rem 0;
 }
-.rightAdvertisementImage{
-    width: 100%;
-    max-height:14rem;
-    border-radius: 0.5rem;
-}
-
-.rightbarOnlineFriendList{
-    margin: 1rem 0 0 0;
-    padding:0;
-    list-style: none;
+.rightAdvertisementImage {
+  width: 100%;
+  max-height: 14rem;
+  border-radius: 0.5rem;
 }
 
+.rightbarOnlineFriendList {
+  margin: 1rem 0 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.userProfileInformation {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+.userProfileFrom {
+  margin: 0.8rem 0;
+}
+.userProfileCityKey,
+.userProfileFromKey,
+.userProfileRelationshipKey {
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: rgb(83, 81, 81);
+}
+
+.userProfileCityValue,
+.userProfileFromValue,
+.userProfileRelationshipValue{
+  margin-left: 0.8rem;
+  font-size:0.97rem;
+}
+
+.userProfileFriendList{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.userProfileFriendListItem{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 28%;
+  margin: 1rem 1rem 0 0;
+  cursor: pointer;
+}
+.userProfileFriendListImage{
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius:0.7rem;
+  object-fit: cover;
+  margin-bottom: 0.25rem;
+}
+.userProfileFriendListName{
+  font-size:0.96rem;
+  font-weight: 500;
+  text-align: center; 
+}
