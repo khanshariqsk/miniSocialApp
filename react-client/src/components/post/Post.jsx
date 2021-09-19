@@ -6,7 +6,7 @@ import { useState } from "react";
 const Post = (props) => {
   const { image, date, like, comment, desc, userId } = props;
   const currentUser = Users.find((user) => user.id === userId);
-  const commentOrComments = parseInt(comment) > 1 ? "c+omments" : "comment";
+  const commentOrComments = parseInt(comment) > 1 ? "comments" : "comment";
   const [likeCount, setLikeCount] = useState(like);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -18,7 +18,7 @@ const Post = (props) => {
   };
 
   return (
-    <div className="post">
+    <div className="post"> 
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">

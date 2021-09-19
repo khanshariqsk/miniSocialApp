@@ -1,19 +1,27 @@
 import "./topbar.css";
 import PersonIcon from "@material-ui/icons/Person";
-import SearchIcon from '@material-ui/icons/Search';
-import ChatIcon from '@material-ui/icons/Chat';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import SearchIcon from "@material-ui/icons/Search";
+import ChatIcon from "@material-ui/icons/Chat";
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import { Link } from "react-router-dom";
+
 const Topbar = () => {
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
+        <Link to="/" style={{ textDecoration: "none" }}>
           <span className="logo">SK SOCIALAPP</span>
+        </Link>
       </div>
       <div className="topbarCenter">
-          <div className="searchbar">
-            <SearchIcon className="searchIcon"/>
-              <input type="text" className="searchInput" placeholder="Search for friend,Post or Videos"/>
-          </div>
+        <div className="searchbar">
+          <SearchIcon className="searchIcon" />
+          <input
+            type="text"
+            className="searchInput"
+            placeholder="Search for friend,Post or Videos"
+          />
+        </div>
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">

@@ -11,9 +11,6 @@ const Rightbar = (props) => {
           <b>Umar Khan</b> and <b>3 other friends</b> have birthday today.
         </span>
       </div>
-      <div className="rightbarAdds">
-        <img src="/assets/ad.png" alt="" className="rightAdvertisementImage" />
-      </div>
       <h4>Online Friends</h4>
       <ul className="rightbarOnlineFriendList">
         {Users.map((user) => (
@@ -48,7 +45,7 @@ const Rightbar = (props) => {
       <div className="userProfileFriends">
         <ul className="userProfileFriendList">
           {Users.map((user) => (
-            <li className="userProfileFriendListItem">
+            <li className="userProfileFriendListItem" key={user.id}>
               <img
                 src={"/" + user?.profilePicture}
                 className="userProfileFriendListImage"

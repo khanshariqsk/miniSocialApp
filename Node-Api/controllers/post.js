@@ -84,9 +84,9 @@ exports.getAPost = async (req, res, next) => {
 }
 
 // Timeline Post Controller
-exports.getTimeine = async (req, res, next) => {
+exports.getTimeline = async (req, res, next) => {
     try {
-        const user = await User.findById(req.body.userId)
+        const user = await User.findById(req.params.userId)
         if (!user) return res.status(404).json('User Not found!!')
         const userPosts = await Post.find({ userId: user._id })
         const followingPosts = await Promise.all(user.following.map(friendId => Post.find({ userId: friendId })))

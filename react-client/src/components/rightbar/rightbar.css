@@ -20,6 +20,7 @@
 .rightbarBirthdayContainer {
   display: flex;
   align-items: center;
+  margin-bottom: 1.2rem;
 }
 .righbarBirthdayImage {
   width: 2rem;
@@ -37,8 +38,8 @@
   width: 100%;
   max-height: 14rem;
   border-radius: 0.5rem;
-}
-
+  
+} 
 .rightbarOnlineFriendList {
   margin: 1rem 0 0 0;
   padding: 0;

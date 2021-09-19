@@ -12,7 +12,6 @@ import { useEffect } from "react";
 const Sidebar = () => {
   useEffect(() => {
     const sidebarElement = document.querySelector(".sidebar");
-    console.log(sidebarElement)
     sidebarElement.addEventListener("hover", () => {
       console.log("hello");
     });

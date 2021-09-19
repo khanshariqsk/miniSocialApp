@@ -22,6 +22,7 @@
     width: 75%;
     border:none;
     margin-left: 0.7rem;
+    font-size: 1rem;
 }
 .shareTopInput:focus{
     outline:none
