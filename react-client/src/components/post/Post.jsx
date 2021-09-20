@@ -1,11 +1,24 @@
 import "./post.css";
+import { useEffect, useState } from "react";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import { Users } from "../../dummyData";
-import { useState } from "react";
+import axios from "axios";
+import { format } from "timeago.js";
 
 const Post = (props) => {
   const { image, date, like, comment, desc, userId } = props;
-  const currentUser = Users.find((user) => user.id === userId);
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    const getUserByID = async () => {
+      try {
+        const userDetails = await axios.get(
+          `${process.env.REACT_APP_DEV_URL}/users/${userId}`
+        );
+        setUser(userDetails.data.others);
+      } catch (error) {}
+    };
+    getUserByID();
+  }, [userId]);
+  console.log(user)
   const commentOrComments = parseInt(comment) > 1 ? "comments" : "comment";
   const [likeCount, setLikeCount] = useState(like);
   const [isLiked, setIsLiked] = useState(false);
@@ -18,17 +31,17 @@ const Post = (props) => {
   };
 
   return (
-    <div className="post"> 
+    <div className="post">
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
             <img
-              src={"/" + currentUser?.profilePicture}
+              src={"/" + user?.profilePicture}
               alt=""
               className="postProfileImage"
             />
-            <span className="postUsername">{currentUser?.username}</span>
-            <span className="postDate">{date}</span>
+            <span className="postUsername">{user?.userName}</span>
+            <span className="postDate">{format(date)}</span>
           </div>
           <div className="postTopRight">
             <MoreVertIcon />

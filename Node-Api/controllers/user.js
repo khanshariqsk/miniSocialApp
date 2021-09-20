@@ -4,13 +4,14 @@ const bcrypt = require('bcrypt');
 // Signup Controller
 exports.registerUser = async (req, res, next) => {
     try {
-        const { password, userName, email } = req.body;
+        const { password, userName, email, coverPicture, profilePicture } = req.body;
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt)
         const user = new User({
             userName,
             password: hashedPassword,
-            email
+            email, coverPicture, profilePicture
+
         })
         const createdUser = await user.save()
         res.status(200).json({ createdUser })

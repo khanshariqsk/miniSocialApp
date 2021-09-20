@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
 const morgan = require("morgan");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
@@ -14,6 +15,7 @@ const uri = process.env.MONGODB_URL
 const port = 8080
 
 // Middlewares
+app.use(cors());
 app.use(express.json());
 app.use(helmet());
 app.use(morgan('common'));
