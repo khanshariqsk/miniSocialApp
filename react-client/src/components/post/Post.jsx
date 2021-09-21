@@ -1,8 +1,9 @@
 import "./post.css";
 import { useEffect, useState } from "react";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import axios from "axios";
 import { format } from "timeago.js";
+import { Link } from "react-router-dom";
+import { getUserByIdApi } from "../../utils/ApiService";
 
 const Post = (props) => {
   const { image, date, like, comment, desc, userId } = props;
@@ -10,15 +11,13 @@ const Post = (props) => {
   useEffect(() => {
     const getUserByID = async () => {
       try {
-        const userDetails = await axios.get(
-          `${process.env.REACT_APP_DEV_URL}/users/${userId}`
-        );
+        const userDetails = await getUserByIdApi(userId)
         setUser(userDetails.data.others);
       } catch (error) {}
     };
     getUserByID();
   }, [userId]);
-  console.log(user)
+  console.log(user);
   const commentOrComments = parseInt(comment) > 1 ? "comments" : "comment";
   const [likeCount, setLikeCount] = useState(like);
   const [isLiked, setIsLiked] = useState(false);
@@ -34,15 +33,20 @@ const Post = (props) => {
     <div className="post">
       <div className="postWrapper">
         <div className="postTop">
-          <div className="postTopLeft">
-            <img
-              src={"/" + user?.profilePicture}
-              alt=""
-              className="postProfileImage"
-            />
-            <span className="postUsername">{user?.userName}</span>
-            <span className="postDate">{format(date)}</span>
-          </div>
+          <Link
+            to={`/profile/${userId}`}
+            style={{ textDecoration: "none", color: "#000" }}
+          >
+            <div className="postTopLeft">
+              <img
+                src={"/" + user?.profilePicture}
+                alt=""
+                className="postProfileImage"
+              />
+              <span className="postUsername">{user?.userName}</span>
+              <span className="postDate">{format(date)}</span>
+            </div>
+          </Link>
           <div className="postTopRight">
             <MoreVertIcon />
           </div>

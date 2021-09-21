@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 import Post from "../post/Post";
 import Share from "../share/Share";
-import axios from "axios";
 import "./feed.css";
+import { getUserTimelineApi } from "../../utils/ApiService";
 
-const Feed = () => {
+const Feed = (props) => {
+  console.log(props)
   const [posts, setPosts] = useState([]);
+  const userTimelineOrFriendTimeline = props?.userInfo ? props.userInfo._id:"6148f8c6bf84b38ec86ec589"
   useEffect(() => {
     const getUserTimeline = async () => {
       try {
-        const userTimeline = await axios.get(
-          `${process.env.REACT_APP_DEV_URL}/posts/timeline/6148f8c6bf84b38ec86ec589`
-        );
+        const userTimeline = await getUserTimelineApi(userTimelineOrFriendTimeline)
         setPosts(userTimeline.data);
       } catch (error) {}
     };
     getUserTimeline();
-  }, []);
+  }, [userTimelineOrFriendTimeline]);
   return (
     <div className="feed">
       <div className="feedWrapper">

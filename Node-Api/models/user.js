@@ -41,19 +41,26 @@ const userSchema = new Schema({
     },
     desc:{
         type:String,
-        max:50
+        max:50,
+        default:"N/A"
     },
     city:{
         type:String,
-        max:50
+        max:50,
+        default:"N/A"
+
     },
     from:{
         type:String,
-        max:50
+        max:50,
+        default:"N/A"
+
     },
     relationShip:{
         type:Number,
-        enum:[1,2,3]
+        enum:[1,2,3],
+        default:"N/A"
+
     }
 
 },{timestamps:true})
