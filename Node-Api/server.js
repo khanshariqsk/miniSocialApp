@@ -23,7 +23,7 @@ app.use(express.static("public"));
 
 // MongoDb connection
 mongoose.connect(uri)
-.then((connection) => {console.log("connected to the Database!")})
+.then((connection) => {console.log("Connected to the Database!")})
 .catch((error) => {console.log(error)});
 
 //Routes Middlewares

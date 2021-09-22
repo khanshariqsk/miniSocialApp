@@ -13,3 +13,8 @@ export const getUserTimelineApi = (userTimelineOrFriendTimeline) => {
         `${BASE_URL_DEV}/posts/timeline/${userTimelineOrFriendTimeline}`
     );
 }
+
+export const getUserFriendsApi = (userFriends) => {
+    return Promise.all(userFriends.map(friendId=>getUserByIdApi(friendId)))
+   
+}

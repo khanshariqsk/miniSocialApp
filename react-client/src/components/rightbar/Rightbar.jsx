@@ -1,9 +1,24 @@
 import OnlineUsers from "../online/OnlineUsers";
 import "./rightbar.css";
 import { Users } from "../../dummyData";
+import { useEffect, useState } from "react";
+import { getUserFriendsApi } from "../../utils/ApiService";
 
 const Rightbar = (props) => {
-  console.log(props)
+  const [userFriends, setUserFriends] = useState([]);
+  useEffect(() => {
+    const getUserFriends = async () => {
+      try {
+        if (props?.userInfo?.following) {
+          const userFriendsData = await getUserFriendsApi(
+            props.userInfo.following
+          );
+          setUserFriends(userFriendsData);
+        }
+      } catch (error) {}
+    };
+    getUserFriends();
+  }, [props?.userInfo?.following]);
   const homeRightbar = (
     <>
       <div className="rightbarBirthdayContainer">
@@ -39,27 +54,34 @@ const Rightbar = (props) => {
         </div>
         <div className="userProfileRelationship">
           <span className="userProfileRelationshipKey">Relationship:</span>
-          <span className="userProfileRelationshipValue">{props.userInfo?.relationShip}</span>
+          <span className="userProfileRelationshipValue">
+            {props.userInfo?.relationShip}
+          </span>
         </div>
       </div>
       <h4 className="userProfileFriendTag">User Friends</h4>
       <div className="userProfileFriends">
         <ul className="userProfileFriendList">
-          {Users.map((user) => (
-            <li className="userProfileFriendListItem" key={user.id}>
+          {userFriends.map((user) => (
+            <li
+              className="userProfileFriendListItem"
+              key={user.data.others._id}
+            >
               <img
-                src={"/" + user?.profilePicture}
+                src={"/" + user?.data.others.profilePicture}
                 className="userProfileFriendListImage"
                 alt="profile"
               />
-              <span className="userProfileFriendListName">{user.username}</span>
+              <span className="userProfileFriendListName">
+                {user.data.others.userName}
+              </span>
             </li>
           ))}
         </ul>
       </div>
     </>
   );
-  const rightbarContent = props?.profile ? profileRightbar : homeRightbar;
+  const rightbarContent = props?.userInfo ? profileRightbar : homeRightbar;
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">{rightbarContent}</div>

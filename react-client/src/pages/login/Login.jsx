@@ -14,7 +14,7 @@ const Login = () => {
           <div className="loginBox">
               <h1 className="loginBoxType">Login</h1>
             <input placeholder="Email" className="loginInput" />
-            <input placeholder="Password" className="loginInput" />
+            <input placeholder="Password" type="password" className="loginInput" />
             <button className="loginButton">Log In</button>
             <span className="loginForgot">Forgot Password?</span>
             <button className="loginRegisterButton">
