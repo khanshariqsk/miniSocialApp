@@ -64,10 +64,14 @@
       font-weight: 500;
       cursor: pointer;
   }
+  .loginButton:disabled{
+    cursor: not-allowed;
+  }
   
   .loginForgot{
       text-align: center;
       color: #1775ee;
+      cursor: pointer;
   }
   
   .loginRegisterButton{
@@ -81,4 +85,10 @@
       font-size: 1.25rem;
       font-weight: 500;
       cursor: pointer;
+      display: flex;
+      justify-content:center;
+      align-items:center
+  }
+  .loginRegisterButton:disabled{
+    cursor: not-allowed;
   }

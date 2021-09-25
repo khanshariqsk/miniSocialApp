@@ -16,5 +16,16 @@ export const getUserTimelineApi = (userTimelineOrFriendTimeline) => {
 
 export const getUserFriendsApi = (userFriends) => {
     return Promise.all(userFriends.map(friendId=>getUserByIdApi(friendId)))
-   
 }
+
+export const getUserLoginCredentialApi = async (userInputData,dispatch) => {
+    try {
+      dispatch({ type: "LOGIN_START" });
+      const loggedInUserData = await axios.post(
+        `${BASE_URL_DEV}/auth/login`,userInputData
+    );
+      dispatch({ type: "LOGIN_RESPONSE", payload: loggedInUserData.data });
+    } catch (error) {
+      dispatch({ type: "LOGIN_ERROR", payload: error });
+    }
+  };
