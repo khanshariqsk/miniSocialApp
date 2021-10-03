@@ -59,7 +59,7 @@ exports.likePost = async (req, res, next) => {
 
         if (post.likes.includes(req.body?.userId)) {
             await post.updateOne({ $pull: { likes: req.body?.userId } })
-            return res.status(403).json('You unliked this Post!!')
+            return res.status(200).json('You unliked this Post!!')
         } else {
             await post.updateOne({ $push: { likes: req.body?.userId } })
             return res.status(200).json("You liked this Post!!")
@@ -70,7 +70,7 @@ exports.likePost = async (req, res, next) => {
 
 }
 
-// Like and Dislike Post Controller
+// Get Single Post Controller
 exports.getAPost = async (req, res, next) => {
     try {
         const post = await Post.findById(req.params?.id)

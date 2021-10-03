@@ -1,28 +1,36 @@
 import "./post.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
-import { getUserByIdApi } from "../../utils/ApiService";
+import { getUserByIdApi, setPostLikeCountApi } from "../../utils/ApiService";
+import { AuthContext } from "../../context/AuthContext";
 
 const Post = (props) => {
-  const { image, date, like, comment, desc, userId } = props;
+  const { id, image, date, like, comment, desc, userId } = props;
   const [user, setUser] = useState({});
+  const [likeCount, setLikeCount] = useState(like.length);
+  const [isLiked, setIsLiked] = useState(false);
+  const commentOrComments = parseInt(comment) > 1 ? "comments" : "comment";
+  const { user: currentUser } = useContext(AuthContext);
   useEffect(() => {
     const getUserByID = async () => {
       try {
-        const userDetails = await getUserByIdApi(userId)
+        const userDetails = await getUserByIdApi(userId);
         setUser(userDetails.data.others);
       } catch (error) {}
     };
     getUserByID();
   }, [userId]);
-  console.log(user);
-  const commentOrComments = parseInt(comment) > 1 ? "comments" : "comment";
-  const [likeCount, setLikeCount] = useState(like);
-  const [isLiked, setIsLiked] = useState(false);
 
-  const likeCounterHandler = () => {
+  useEffect(() => {
+    setIsLiked(like.includes(currentUser.matchedUser._id));
+  }, [currentUser.matchedUser._id, like]);
+
+  const likeCounterHandler = async () => {
+    try {
+      await setPostLikeCountApi(id, currentUser.matchedUser._id);
+    } catch (error) {}
     setLikeCount((prevLikeCount) => {
       return isLiked ? prevLikeCount - 1 : prevLikeCount + 1;
     });

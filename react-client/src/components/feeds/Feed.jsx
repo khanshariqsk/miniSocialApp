@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Post from "../post/Post";
 import Share from "../share/Share";
+import {AuthContext} from '../../context/AuthContext'
 import "./feed.css";
 import { getUserTimelineApi } from "../../utils/ApiService";
 
 const Feed = (props) => {
-  console.log(props)
+  const {user} = useContext(AuthContext)
+  console.log(user)
   const [posts, setPosts] = useState([]);
-  const userTimelineOrFriendTimeline = props?.userInfo ? props.userInfo._id:"6148f8c6bf84b38ec86ec589"
+  const userTimelineOrFriendTimeline = props?.userInfo ? props.userInfo._id:user.matchedUser._id
   useEffect(() => {
     const getUserTimeline = async () => {
       try {

@@ -14,6 +14,12 @@ export const getUserTimelineApi = (userTimelineOrFriendTimeline) => {
     );
 }
 
+export const setPostLikeCountApi = (postId,userId) => {
+  return axios.put(
+      `${BASE_URL_DEV}/posts/${postId}/like`,{userId}
+  );
+}
+
 export const getUserFriendsApi = (userFriends) => {
     return Promise.all(userFriends.map(friendId=>getUserByIdApi(friendId)))
 }
