@@ -14,9 +14,9 @@ const Register = () => {
             <div className="signUpBox">
             <h1 className="loginBoxType">Sign Up</h1>
               <input placeholder="Username" className="loginInput" />
-              <input placeholder="Email" className="loginInput" />
-              <input placeholder="Password" type="password" className="loginInput" />
-              <input placeholder="Confirm Password" type="password" className="loginInput" />
+              <input placeholder="Email" className="loginInput" type="email" required />
+              <input placeholder="Password" type="password" minLength="6" required className="loginInput" />
+              <input placeholder="Confirm Password" type="password" className="loginInput" minLength="6" required />
               <button className="loginButton">Sign Up</button>
               <button className="loginRegisterButton">
                 Log into Account

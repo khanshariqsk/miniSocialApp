@@ -47,7 +47,7 @@ const Post = (props) => {
           >
             <div className="postTopLeft">
               <img
-                src={"/" + user?.profilePicture}
+                src={ user.profilePicture ? '/'+user?.profilePicture:"/assets/person/no-avatar.png"}
                 alt=""
                 className="postProfileImage"
               />
@@ -61,7 +61,7 @@ const Post = (props) => {
         </div>
         <div className="postCenter">
           <span className="postCaption">{desc}</span>
-          <img src={"/" + image} alt="" className="postImage" />
+          <img src={image?"/" + image:"/assets/person/no-avatar.png"} alt="" className="postImage" />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">

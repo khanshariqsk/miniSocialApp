@@ -3,26 +3,36 @@ import PermMediaIcon from "@material-ui/icons/PermMedia";
 import LabelIcon from "@material-ui/icons/Label";
 import RoomIcon from "@material-ui/icons/Room";
 import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
+import { useContext, useRef } from "react";
+import { AuthContext } from "../../context/AuthContext";
 const Share = () => {
+  const {user}  = useContext(AuthContext)
+  const descRef = useRef()
+  console.log(user)
+  const createPostHandler = () => {
+
+  }
   return (
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <img src="/assets/person/1.jpeg" className="shareTopImage" alt="" />
+          <img src={user?'/'+user.matchedUser.profilePicture:"/assets/person/no-avatar.png"} className="shareTopImage" alt="" />
           <input
             type="text"
             placeholder="What's In your mind Shariq?"
             className="shareTopInput"
+            ref={descRef}
           />
         </div>
         <hr className="shareHr" />
 
-        <div className="shareBottom">
+        <form className="shareBottom" onSubmit={createPostHandler}>
           <div className="shareOptions">
-            <div className="shareOption">
+            <label className="shareOption" htmlFor="userPost">
               <PermMediaIcon htmlColor="pink" />
               <span className="shareOptionText">Photo or Video</span>
-            </div>
+              <input type="file" id="userPost" style={{display:"none"}}className="fileSelector" />
+            </label>
             <div className="shareOption">
               <LabelIcon htmlColor="blue" />
               <span className="shareOptionText">Tags</span>
@@ -37,9 +47,9 @@ const Share = () => {
             </div>
           </div>
           <div className="shareButtonContainer">
-              <button className="shareButton">Share</button>
+              <button className="shareButton" type="submit">Share</button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

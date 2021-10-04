@@ -59,7 +59,7 @@ const Sidebar = () => {
           {Users.map((user) => (
             <li key={user.id} className="sidebarFriendListItem">
               <img
-                src={"/" + user.profilePicture}
+                src={user.profilePicture?"/" + user.profilePicture:"/assets/person/no-avatar.png"}
                 alt=""
                 className="sidebarFriendListItemImage"
               />

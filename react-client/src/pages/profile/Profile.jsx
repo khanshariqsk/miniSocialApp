@@ -26,8 +26,8 @@ const Profile = () => {
         <div className="profileContainer">
           <div className="profileTop">
             <div className="profileCover">
-              <img src={'/' + user.coverPicture} alt="" className="profileCoverImg" />
-              <img src={'/' + user.profilePicture} alt="" className="profileUserImg" />
+              <img src={user.coverPicture?'/' + user.coverPicture:"/assets/person/no-cover.png"} alt="" className="profileCoverImg" />
+              <img src={user.profilePicture?'/' + user.profilePicture:"/assets/person/no-avatar.png"} alt="" className="profileUserImg" />
             </div>
             <div className="profileInfo">
                 <h4 className="profileInfoName">{user.userName}</h4>

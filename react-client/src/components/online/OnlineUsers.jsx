@@ -4,7 +4,7 @@ const OnlineUsers = (props) => {
     <li className="rightbarOnlineFriendItem">
       <div className="rightbarOnlineFriendImageContainer">
         <img
-          src={"/" + props?.profilePicture}
+          src={props?.profilePicture?"/" + props?.profilePicture:"/assets/person/no-avatar.png"}
           alt=""
           className="rightbarOnlineFriendImage"
         />

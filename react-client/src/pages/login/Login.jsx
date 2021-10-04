@@ -32,12 +32,14 @@ const Login = () => {
         <div className="loginRight">
           <form className="loginBox" onSubmit={loginFormSubmitHandler}>
             <h1 className="loginBoxType">Login</h1>
-            <input placeholder="Email" className="loginInput" ref={emailRef} />
+            <input placeholder="Email" className="loginInput" type="email" required ref={emailRef} />
             <input
               placeholder="Password"
               type="password"
               className="loginInput"
               ref={passwordRef}
+              required
+              minLength="6"
             />
             <button className="loginButton" type="submit" disabled={isFetching}>
               {isFetching ? <CircularProgress color="white" size="1.5rem"/> : "Log In"}

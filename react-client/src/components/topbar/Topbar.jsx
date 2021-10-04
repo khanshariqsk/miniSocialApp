@@ -4,8 +4,12 @@ import SearchIcon from "@material-ui/icons/Search";
 import ChatIcon from "@material-ui/icons/Chat";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import {AuthContext} from "../../context/AuthContext"
 
 const Topbar = () => {
+  const {user}  = useContext(AuthContext)
+
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -42,7 +46,7 @@ const Topbar = () => {
             <span className="topbarIconBadge">1</span>
           </div>
         </div>
-        <img src="/assets/person/1.jpeg" className="topbarImg" alt="" />
+        <img src={user?'/'+user.matchedUser.profilePicture:"/assets/person/no-avatar.png"}  className="topbarImg" alt="" />
       </div>
     </div>
   );

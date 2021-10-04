@@ -68,7 +68,7 @@ const Rightbar = (props) => {
               key={user.data.others._id}
             >
               <img
-                src={"/" + user?.data.others.profilePicture}
+                src={user?.data.others.profilePicture?"/" + user?.data.others.profilePicture:"/assets/person/no-avatar.png"}
                 className="userProfileFriendListImage"
                 alt="profile"
               />
