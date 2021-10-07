@@ -5,9 +5,14 @@ const Post = require('../models/post')
 // Create Post Controller
 exports.createPost = async (req, res, next) => {
     try {
-        const post = new Post(req.body)
+        const post = new Post({
+            userId:req.body.userId,
+            desc:req.body?.desc,
+            img:req.file.filename
+        })
         const createdPost = await post.save()
         res.status(200).json({ createdPost })
+      
     } catch (error) {
         return res.status(500).send('Internal server Error!!')
     }

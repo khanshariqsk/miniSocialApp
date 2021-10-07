@@ -20,6 +20,12 @@ export const setPostLikeCountApi = (postId,userId) => {
   );
 }
 
+export const createUserPostApi = (formData) => {
+  return axios.post(
+      `${BASE_URL_DEV}/posts/`,formData
+  );
+}
+
 export const getUserFriendsApi = (userFriends) => {
     return Promise.all(userFriends.map(friendId=>getUserByIdApi(friendId)))
 }

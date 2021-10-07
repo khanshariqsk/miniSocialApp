@@ -7,6 +7,7 @@ import { getUserByIdApi, setPostLikeCountApi } from "../../utils/ApiService";
 import { AuthContext } from "../../context/AuthContext";
 
 const Post = (props) => {
+  const imagePath = process.env.REACT_APP_DEV_IMAGE_URL 
   const { id, image, date, like, comment, desc, userId } = props;
   const [user, setUser] = useState({});
   const [likeCount, setLikeCount] = useState(like.length);
@@ -22,7 +23,6 @@ const Post = (props) => {
     };
     getUserByID();
   }, [userId]);
-
   useEffect(() => {
     setIsLiked(like.includes(currentUser.matchedUser._id));
   }, [currentUser.matchedUser._id, like]);
@@ -61,7 +61,7 @@ const Post = (props) => {
         </div>
         <div className="postCenter">
           <span className="postCaption">{desc}</span>
-          <img src={image?"/" + image:"/assets/person/no-avatar.png"} alt="" className="postImage" />
+          <img src={image?imagePath+'/'+image:"/assets/person/no-avatar.png"} alt="" className="postImage" />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
